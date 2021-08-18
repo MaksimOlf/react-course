@@ -43,6 +43,9 @@ const Profile = () => {
 				<div class="content__posts-post">
 					Post 2
 				</div>
+				<div class="content__posts-post">
+					Post 3
+				</div>
 			</div>
 		</div>
 	)
