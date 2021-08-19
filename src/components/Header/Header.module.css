@@ -1,0 +1,19 @@
+.appHeader {
+	display: flex;
+	align-items: center;
+	padding: 0 15px;
+	height: 80px;
+	align-self: center;
+	grid-area: header;
+	background-color: rgb(190, 141, 192);
+}
+
+.appHeader img {
+	width: 80px;
+	height: 57px;
+	transition: all 0.6s ease 0.2s;
+}
+.appHeader img:hover {
+	transform: scale(1.1);
+	transition: all 0.6s ease 0s;
+}

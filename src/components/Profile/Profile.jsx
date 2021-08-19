@@ -1,20 +1,22 @@
 import React from 'react';
+import Posts from './Posts/Posts';
+import styles from './Profile.module.css'
 
 
 const Profile = () => {
 	return (
-		<div className="app-content">
-			<div className="content__top-image">
+		<div className={styles.content}>
+			<div className={styles.topImage}>
 				<img src="./images/offset_comp_772626-opt.jpg" alt="Logo not found" />
 			</div>
-			<div className="content__profile">
-				<div className="content__profile-image">
+			<div className={styles.profile}>
+				<div className={styles.profileImage}>
 					<img src="https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png" alt="Logo not found" />
 				</div>
-				<div className="content__profile-name">
+				<div className={styles.profileName}>
 					Maksim O.
 				</div>
-				<table className="content__profile-info">
+				<table className={styles.profileInfo}>
 					<tr>
 						<td><span>Date of birth:</span></td>
 						<td>14.04.1988</td>
@@ -33,20 +35,7 @@ const Profile = () => {
 					</tr>
 				</table>
 			</div>
-			<div className="content__posts">
-				<div className="content__posts-new">
-					New post
-				</div>
-				<div className="content__posts-post">
-					Post 1
-				</div>
-				<div class="content__posts-post">
-					Post 2
-				</div>
-				<div class="content__posts-post">
-					Post 3
-				</div>
-			</div>
+			<Posts />
 		</div>
 	)
 }

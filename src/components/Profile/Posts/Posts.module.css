@@ -1,0 +1,29 @@
+.posts {
+	padding: 20px;
+}
+
+.newPost {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.text {
+	flex: 1 1 auto;
+	font-size: 16px;
+	resize: none;
+	padding: 10px 10px 150px 10px;
+	margin: 0 30px 20px 0;
+	border-radius: 10px;
+}
+
+.button {
+	flex: 0 0 150px;
+	color: #fff;
+	background-color: #000;
+	padding: 15px 0;
+	text-transform: uppercase;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	align-self: flex-end;
+}

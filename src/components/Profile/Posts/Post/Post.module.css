@@ -1,0 +1,45 @@
+.post {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-bottom: 30px;
+}
+
+.text {
+	flex: 1 1 auto;
+	position: relative;
+	font-size: 16px;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 15px;
+}
+.text:before {
+	position: absolute;
+	content: "";
+	top: 10px;
+	right: -43px;
+	width: 40px;
+	height: 40px;
+	opacity: 0.8;
+	background-color: #fff;
+	border-radius: 50%;
+}
+.text:after {
+	position: absolute;
+	content: "";
+	top: 20px;
+	right: -77px;
+	width: 30px;
+	height: 30px;
+	opacity: 0.6;
+	background-color: #fff;
+	border-radius: 50%;
+}
+
+.image {
+	flex: 0 0 80px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin: 0 20px 0 80px;
+}

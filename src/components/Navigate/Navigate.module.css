@@ -1,0 +1,26 @@
+.navigate {
+	grid-area: navigate;
+	background-color: rgb(190, 141, 192);
+}
+
+.navigateList {
+	display: flex;
+	flex-direction: column;
+	padding-left: 20px;
+}
+
+.navigateLink {
+	font-size: 26px;
+	padding-top: 20px;
+}
+
+.navigateLink a {
+	color: #fff;
+	transition: all 0.6s ease 0.2s;
+}
+
+.navigateLink a:hover {
+	color: #000;
+	text-decoration: underline;
+	transition: all 0.6s ease 0s;
+}
