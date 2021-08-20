@@ -1,0 +1,81 @@
+/* .dialogContent {
+} */
+
+.dialogRow {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+}
+
+.dialogUsers {
+	flex: 0 1 30%;
+	background-color: rgb(190, 141, 192);
+	margin: 10px;
+	border-radius: 10px;
+}
+
+.dialogMessages {
+	flex: 0 1 70%;
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(190, 141, 192);
+	margin: 10px;
+	border-radius: 10px;
+}
+
+.currentUser {
+	flex: 0 0 120px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 30px;
+	border-bottom: 10px solid rgb(147, 119, 148);
+}
+
+.currentImage {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.currentName {
+	font-size: 30px;
+	background-color: rgb(245, 193, 247);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.messagesColumn {
+	flex: 1 1 auto;
+	align-self: flex-start;
+	padding: 20px;
+	overflow-y: auto;
+	max-height: 100vh;
+}
+
+.newPost {
+	flex: 0 0 120px;
+	display: flex;
+	flex-direction: row;
+	border-top: 10px solid rgb(147, 119, 148);
+	padding: 10px;
+}
+
+.message {
+	flex: 1 1 auto;
+	resize: none;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: rgb(248, 220, 242);
+}
+
+.button {
+	flex: 0 0 150px;
+	color: #fff;
+	background-color: #000;
+	padding: 15px 0;
+	text-transform: uppercase;
+	border-radius: 10px;
+	margin: 20px;
+}

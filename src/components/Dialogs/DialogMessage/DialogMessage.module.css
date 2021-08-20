@@ -1,0 +1,8 @@
+.dialogMessage {
+	font-size: 20px;
+	background-color: rgb(248, 220, 242);
+	padding: 10px;
+	border-radius: 10px;
+	max-width: 70%;
+	margin: 20px 0;
+}

@@ -1,6 +1,7 @@
 .navigate {
 	grid-area: navigate;
 	background-color: rgb(190, 141, 192);
+	padding: 30px 0;
 }
 
 .navigateList {
@@ -17,6 +18,13 @@
 .navigateLink a {
 	color: #fff;
 	transition: all 0.6s ease 0.2s;
+}
+
+.navigateLink a.active {
+	color: #000;
+	background-color: rgb(245, 193, 247);
+	padding: 5px;
+	border-radius: 10px;
 }
 
 .navigateLink a:hover {

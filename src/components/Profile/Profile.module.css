@@ -1,10 +1,6 @@
-.content {
-	grid-area: content;
-	background-color: rgb(147, 119, 148);
-}
+/* .topImage {
+} */
 
-.topImage {
-}
 .topImage img {
 	width: 100%;
 	height: 200px;
@@ -25,7 +21,7 @@
 .profileImage {
 	grid-area: avatar;
 	align-self: center;
-	background-color: #fff;
+	background-color: rgb(248, 220, 242);
 	border: 1px solid black;
 }
 .profileImage img {

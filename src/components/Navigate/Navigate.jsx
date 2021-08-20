@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Navigate.module.css'
+import styles from './Navigate.module.css';
+import { NavLink } from 'react-router-dom';
 
 
 const Navigate = () => {
@@ -7,19 +8,19 @@ const Navigate = () => {
 		<nav className={styles.navigate}>
 			<ul className={styles.navigateList}>
 				<li className={styles.navigateLink}>
-					<a href="#">Profile</a>
+					<NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink>
 				</li>
 				<li className={styles.navigateLink}>
-					<a href="#">Messages</a>
+					<NavLink to="/dialogs" activeClassName={styles.active}>Messages</NavLink>
 				</li>
 				<li className={styles.navigateLink}>
-					<a href="#">News</a>
+					<NavLink to="/news" activeClassName={styles.active}>News</NavLink>
 				</li>
 				<li className={styles.navigateLink}>
-					<a href="#">Music</a>
+					<NavLink to="/music" activeClassName={styles.active}>Music</NavLink>
 				</li>
 				<li className={styles.navigateLink}>
-					<a href="#">Settings</a>
+					<NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink>
 				</li>
 			</ul>
 		</nav>

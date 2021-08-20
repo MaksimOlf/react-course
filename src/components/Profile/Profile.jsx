@@ -5,7 +5,7 @@ import styles from './Profile.module.css'
 
 const Profile = () => {
 	return (
-		<div className={styles.content}>
+		<div>
 			<div className={styles.topImage}>
 				<img src="./images/offset_comp_772626-opt.jpg" alt="Logo not found" />
 			</div>
