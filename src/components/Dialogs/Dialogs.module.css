@@ -8,14 +8,13 @@
 }
 
 .dialogUsers {
-	flex: 0 1 30%;
-	background-color: rgb(190, 141, 192);
+	flex: 0 0 30%;
 	margin: 10px;
 	border-radius: 10px;
 }
 
 .dialogMessages {
-	flex: 0 1 70%;
+	flex: 0 0 66%;
 	display: flex;
 	flex-direction: column;
 	background-color: rgb(190, 141, 192);
@@ -44,14 +43,6 @@
 	background-color: rgb(245, 193, 247);
 	padding: 10px;
 	border-radius: 5px;
-}
-
-.messagesColumn {
-	flex: 1 1 auto;
-	align-self: flex-start;
-	padding: 20px;
-	overflow-y: auto;
-	max-height: 100vh;
 }
 
 .newPost {
