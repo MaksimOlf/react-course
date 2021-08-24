@@ -3,11 +3,14 @@ import Posts from './Posts/Posts';
 import styles from './Profile.module.css'
 
 
-const Profile = () => {
+
+const Profile = (props) => {
+
+
 	return (
 		<div>
 			<div className={styles.topImage}>
-				<img src="./images/offset_comp_772626-opt.jpg" alt="Logo not found" />
+				<img src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300" alt="Logo not found" />
 			</div>
 			<div className={styles.profile}>
 				<div className={styles.profileImage}>
@@ -35,7 +38,7 @@ const Profile = () => {
 					</tr>
 				</table>
 			</div>
-			<Posts />
+			<Posts infoPosts={props.data.infoPosts} />
 		</div>
 	)
 }

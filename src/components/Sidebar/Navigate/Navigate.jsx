@@ -3,7 +3,7 @@ import styles from './Navigate.module.css';
 import { NavLink } from 'react-router-dom';
 
 
-const Navigate = () => {
+const Navigate = (props) => {
 	return (
 		<nav className={styles.navigate}>
 			<ul className={styles.navigateList}>

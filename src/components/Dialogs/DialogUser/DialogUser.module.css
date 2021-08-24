@@ -6,7 +6,7 @@
 	align-items: center;
 	font-weight: 500;
 	padding: 10px;
-	margin-bottom: 5px;
+	margin: 0 10px 10px 0;
 	border-radius: 10px;
 	background-color: rgb(190, 141, 192);
 	border: 3px solid rgb(245, 193, 247);
@@ -31,7 +31,7 @@
 	width: 80px;
 	height: 80px;
 	border-radius: 50%;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .name {

@@ -4,17 +4,20 @@
 .dialogRow {
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
+	padding: 15px;
 }
 
 .dialogUsers {
 	flex: 0 0 30%;
+	max-height: 80vh;
+	overflow-y: auto;
 	margin: 10px;
 	border-radius: 10px;
 }
 
 .dialogMessages {
 	flex: 0 0 66%;
+	max-height: 80vh;
 	display: flex;
 	flex-direction: column;
 	background-color: rgb(190, 141, 192);

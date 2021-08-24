@@ -5,9 +5,9 @@
   display: grid;
   grid-template-areas:
     "header header"
-    "navigate content";
+    "sidebar content";
   grid-template-rows: 80px 1fr;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1.2fr 5fr;
   grid-gap: 20px;
 }
 
