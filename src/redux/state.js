@@ -1,6 +1,5 @@
 import {rerenderEntireTree} from '../render.js';
 
-
 let state = {
 	sideBar: {
 		myFriends: [
@@ -49,15 +48,18 @@ let state = {
 	}
 }
 
-export let addPost = (text) => {
+window.state = state;
+
+export let addPost = () => {
 	let newPost = {
 		id: 3,
 		name: "Maksim",
 		src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
-		text: text,
+		text: state.profilePage.textreaText,
 		nLikes: 0,
 	}
 	state.profilePage.infoPosts.push(newPost);
+	state.profilePage.textreaText = '';
 	rerenderEntireTree(state);
 }
 
