@@ -8,13 +8,18 @@ const Dialogs = (props) => {
 
 	let userDialog = props.data.dialogUsers.map(user => <DialogUser id={user.id} name={user.name} src={user.src} />);
 
+	let newDialogMessage = React.createRef();
+
+	let addMessage = () => {
+		let MessageText = newDialogMessage.current.value;
+		alert(MessageText);
+	}
+
 	return (
 		<div className={styles.dialogContent}>
 			<div className={styles.dialogRow}>
 				<div className={styles.dialogUsers}>
-
 					{userDialog}
-
 				</div>
 				<div className={styles.dialogMessages}>
 					<div className={styles.currentUser}>
@@ -24,10 +29,10 @@ const Dialogs = (props) => {
 						</div>
 					</div>
 					<Dialog dialogMessages={props.data.dialogMessages} />
-					<form className={styles.newPost}>
-						<textarea required className={styles.message} placeholder="Type your message here..."></textarea>
-						<button type="submit" className={styles.button}>Send</button>
-					</form>
+					<div className={styles.newPost}>
+						<textarea ref={newDialogMessage} required className={styles.message} placeholder="Type your message here..."></textarea>
+						<button onClick={addMessage} type="submit" className={styles.button}>Send</button>
+					</div>
 				</div>
 			</div>
 		</div >

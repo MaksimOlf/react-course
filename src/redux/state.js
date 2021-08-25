@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from '../render.js';
+
 
 let state = {
 	sideBar: {
@@ -40,10 +42,29 @@ let state = {
 	},
 	profilePage: {
 		infoPosts: [
-		{ id: 1, name: "Rocket", src: "https://cs-site.ru/uploads/posts/2020-09/1600253903_35.jpg", text: 'Nds kmk mkllewkm  kwem kewm kwem wem ekw!!!', nLikes: 23 },
-		{ id: 2, name: "Groot", src: "https://gamehag.com/static/avatar/5194053_max.jpg", text: 'I AM GROOT!!!', nLikes: 47 },
-	]
+			{ id: 1, name: "Rocket", src: "https://cs-site.ru/uploads/posts/2020-09/1600253903_35.jpg", text: 'Nds kmk mkllewkm  kwem kewm kwem wem ekw!!!', nLikes: 23 },
+			{ id: 2, name: "Groot", src: "https://gamehag.com/static/avatar/5194053_max.jpg", text: 'I AM GROOT!!!', nLikes: 47 },
+		],
+		textreaText: 'EEEEEEEEEEEEEEEEYYYYYYYY!!!!!!!!!!',
 	}
+}
+
+export let addPost = (text) => {
+	let newPost = {
+		id: 3,
+		name: "Maksim",
+		src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
+		text: text,
+		nLikes: 0,
+	}
+	state.profilePage.infoPosts.push(newPost);
+	rerenderEntireTree(state);
+}
+
+export let textareaChange = (newText) => {
+
+	state.profilePage.textreaText = newText;
+	rerenderEntireTree(state);
 }
 
 export default state;

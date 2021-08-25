@@ -38,7 +38,7 @@ const Profile = (props) => {
 					</tr>
 				</table>
 			</div>
-			<Posts infoPosts={props.data.infoPosts} />
+			<Posts infoPosts={props.data.infoPosts} textreaText={props.data.textreaText} addPost={props.addPost} textareaChange={props.textareaChange} />
 		</div>
 	)
 }
