@@ -20,7 +20,7 @@ const App = (props) => {
         <Sidebar data={props.state.sideBar} />
         <div className='content'>
           <Route path="/profile" render={ () => <Profile data={props.state.profilePage} addPost={props.addPost} textareaChange={props.textareaChange}/>} />
-          <Route path="/dialogs" render={ () => <Dialogs data={props.state.dialogsPage} />} />
+          <Route path="/dialogs" render={ () => <Dialogs data={props.state.dialogsPage} addMessage={props.addMessage} messageChange={props.messageChange} />} />
           <Route path="/news" render={ () => <News />} />
           <Route path="/music" render={ () => <Music />} />
           <Route path="/settings" render={ () => <Settings />} />

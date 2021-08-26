@@ -36,19 +36,18 @@ let state = {
 			{ id: 9, text: "Latur quodti eaque dur odit sequi deserunt." },
 			{ id: 10, text: "Latur quodti eaque dur odit sequi deserunt." },
 			{ id: 11, text: "Latur quodti eaque dur odit sequi deserunt." },
-			{ id: 12, text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A libero officiis tempore architecto fuga porro consequatur dicta incidunt sequi quidem accusantium iste, magnam quaerat possimus qui quod error, doloribus vero molestias? Obcaecati eaque dicta quae accusantium consectetur odit sequi deserunt." },
+			{ id: 12, text: "Zonsequatur dicta incidudoloribus vero molestaccusantium consectetur odit sequi deserunt." },
 		],
+		dialogTextarea: '',
 	},
 	profilePage: {
 		infoPosts: [
 			{ id: 1, name: "Rocket", src: "https://cs-site.ru/uploads/posts/2020-09/1600253903_35.jpg", text: 'Nds kmk mkllewkm  kwem kewm kwem wem ekw!!!', nLikes: 23 },
 			{ id: 2, name: "Groot", src: "https://gamehag.com/static/avatar/5194053_max.jpg", text: 'I AM GROOT!!!', nLikes: 47 },
 		],
-		textreaText: 'EEEEEEEEEEEEEEEEYYYYYYYY!!!!!!!!!!',
+		textreaText: '',
 	}
 }
-
-window.state = state;
 
 export let addPost = () => {
 	let newPost = {
@@ -64,8 +63,21 @@ export let addPost = () => {
 }
 
 export let textareaChange = (newText) => {
-
 	state.profilePage.textreaText = newText;
+	rerenderEntireTree(state);
+}
+
+export let addMessage = () => {
+	let newPost = {
+		id: 13,
+		text: state.dialogsPage.dialogTextarea,
+	}
+	state.dialogsPage.dialogMessages.push(newPost);
+	rerenderEntireTree(state);
+}
+
+export let messageChange = (text) => {
+	state.dialogsPage.dialogTextarea = text;
 	rerenderEntireTree(state);
 }
 

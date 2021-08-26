@@ -9,7 +9,7 @@ const Posts = (props) => {
 
 	let newPostElement = React.createRef();
 
-	let addPost = () => {
+	let addNewPost = () => {
 		props.addPost();
 	}
 
@@ -21,8 +21,8 @@ const Posts = (props) => {
 	return (
 		<div className={styles.posts}>
 			<div className={styles.newPost}>
-				<textarea ref={newPostElement} required className={styles.text} onChange={onPostChange} value={props.textreaText} />
-				<button onClick={addPost} type="submit" className={styles.button}>Send</button>
+				<textarea ref={newPostElement} className={styles.text} onChange={onPostChange} value={props.textreaText} placeholder='Type your message here...' />
+				<button onClick={addNewPost} className={styles.button}>Send</button>
 			</div>
 			{dialogPost}
 		</div>
