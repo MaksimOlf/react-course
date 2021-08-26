@@ -4,6 +4,8 @@ import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import Dialog from './Dialog/Dialog';
 
+import { addMessageActionCreator, onMessageChangeActionCreator } from '../../redux/state';
+
 const Dialogs = (props) => {
 
 	let userDialog = props.data.dialogUsers.map(user => <DialogUser id={user.id} name={user.name} src={user.src} />);
@@ -11,13 +13,14 @@ const Dialogs = (props) => {
 	let newDialogMessage = React.createRef();
 
 	let addNewMessage = () => {
-		props.dispatch({ type: "ADD-MESSAGE" });
+		props.dispatch(addMessageActionCreator());
 		newDialogMessage.current.value = '';
 	}
 
 	let onMessageChange = () => {
 		let text = newDialogMessage.current.value;
-		props.dispatch({ type: "MESSAGE-CHANGE", text });
+		let action = onMessageChangeActionCreator(text);
+		props.dispatch(action);
 	}
 
 	return (

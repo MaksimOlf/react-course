@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const TEXTAREA_CHANGE = "TEXTAREA-CHANGE";
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const MESSAGE_CHANGE = "MESSAGE-CHANGE";
+
 
 let store = {
 	_state: {
@@ -62,31 +67,57 @@ let store = {
 
 
 	dispatch(action) {
-		if (action.type === "ADD-POST") {
+		if (action.type === ADD_POST) {
 			let newPost = {
-			id: 3,
-			name: "Maksim",
-			src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
-			text: this._state.profilePage.textreaText,
-			nLikes: 0,
+				id: 3,
+				name: "Maksim",
+				src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
+				text: this._state.profilePage.textreaText,
+				nLikes: 0,
 			}
 			this._state.profilePage.infoPosts.push(newPost);
 			this._state.profilePage.textreaText = '';
 			this._callSubscriber(this._state);
-		} else if (action.type === "ADD-MESSAGE") {
+		} else if (action.type === ADD_MESSAGE) {
 			let newPost = {
 			id: 13,
 			text: this._state.dialogsPage.dialogTextarea,
 			}
 			this._state.dialogsPage.dialogMessages.push(newPost);
 			this._callSubscriber(this._state);
-		} else if (action.type === "TEXTAREA-CHANGE") {
+		} else if (action.type === TEXTAREA_CHANGE) {
 			this._state.profilePage.textreaText = action.text;
 			this._callSubscriber(this._state);
-		} else if (action.type === "MESSAGE-CHANGE") {
+		} else if (action.type === MESSAGE_CHANGE) {
 			this._state.dialogsPage.dialogTextarea = action.text;
 			this._callSubscriber(this._state);
 		}
+	}
+}
+
+export const addPostActionCreator = () => {
+	return {
+		type: ADD_POST,
+	}
+}
+
+export const onTextareaChangeActionCreator = (text) => {
+	return {
+		type: TEXTAREA_CHANGE,
+		text,
+	}
+}
+
+export const addMessageActionCreator = () => {
+	return {
+		type: ADD_MESSAGE,
+	}
+}
+
+export const onMessageChangeActionCreator = (text) => {
+	return {
+		type: MESSAGE_CHANGE,
+		text,
 	}
 }
 
