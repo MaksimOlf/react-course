@@ -4,23 +4,21 @@ import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import Dialog from './Dialog/Dialog';
 
-import { addMessageActionCreator, onMessageChangeActionCreator } from '../../redux/state';
 
 const Dialogs = (props) => {
-
-	let userDialog = props.data.dialogUsers.map(user => <DialogUser id={user.id} name={user.name} src={user.src} />);
+	debugger;
+	let userDialog = props.dialogUsers.map(user => <DialogUser id={user.id} name={user.name} src={user.src} />);
 
 	let newDialogMessage = React.createRef();
 
 	let addNewMessage = () => {
-		props.dispatch(addMessageActionCreator());
+		props.addMessage();
 		newDialogMessage.current.value = '';
 	}
 
 	let onMessageChange = () => {
 		let text = newDialogMessage.current.value;
-		let action = onMessageChangeActionCreator(text);
-		props.dispatch(action);
+		props.updateMessage(text);
 	}
 
 	return (
@@ -36,7 +34,7 @@ const Dialogs = (props) => {
 							Groot
 						</div>
 					</div>
-					<Dialog dialogMessages={props.data.dialogMessages} />
+					<Dialog dialogMessages={props.dialogMessages} />
 					<div className={styles.newPost}>
 						<textarea ref={newDialogMessage} className={styles.message} onChange={onMessageChange} value={props.dialogTextarea} placeholder="Type your message here..." />
 						<button onClick={addNewMessage} className={styles.button}>Send</button>

@@ -2,7 +2,6 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './Posts.module.css';
 
-import { addPostActionCreator, onTextareaChangeActionCreator } from '../../../redux/state';
 
 const Posts = (props) => {
 
@@ -10,21 +9,20 @@ const Posts = (props) => {
 
 	let newPostElement = React.createRef();
 
-	let addNewPost = () => {
-		props.dispatch(addPostActionCreator());
+	let addPost = () => {
+		props.addNewPost();
 	}
 
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		let action = onTextareaChangeActionCreator(text);
-		props.dispatch(action);
+		props.updateNewPostText(text);
 	}
 
 	return (
 		<div className={styles.posts}>
 			<div className={styles.newPost}>
 				<textarea ref={newPostElement} className={styles.text} onChange={onPostChange} value={props.textreaText} placeholder='Type your message here...' />
-				<button onClick={addNewPost} className={styles.button}>Send</button>
+				<button onClick={addPost} className={styles.button}>Send</button>
 			</div>
 			{dialogPost}
 		</div>

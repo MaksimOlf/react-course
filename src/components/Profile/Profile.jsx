@@ -1,5 +1,5 @@
 import React from 'react';
-import Posts from './Posts/Posts';
+import PostsContainer from './Posts/PostsContainer';
 import styles from './Profile.module.css'
 
 
@@ -38,7 +38,7 @@ const Profile = (props) => {
 					</tr>
 				</table>
 			</div>
-			<Posts infoPosts={props.data.infoPosts} textreaText={props.data.textreaText} dispatch={props.dispatch} />
+			<PostsContainer store={props.store} />
 		</div>
 	)
 }
