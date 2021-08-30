@@ -1,0 +1,7 @@
+.usersColumn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin: 15px -10px;
+}

@@ -5,8 +5,7 @@ import DialogMessage from './DialogMessage/DialogMessage';
 
 const Dialog = (props) => {
 
-
-	let messageDialog = props.dialogMessages.map(message => <DialogMessage text={message.text} />);
+	let messageDialog = props.dialogMessages.map(message => <DialogMessage key={message.id} text={message.text} />);
 
 	return (
 

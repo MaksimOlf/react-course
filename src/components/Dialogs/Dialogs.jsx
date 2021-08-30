@@ -2,12 +2,11 @@ import React from 'react';
 
 import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
-import Dialog from './Dialog/Dialog';
+import DialogContainer from './Dialog/DialogContainer';
 
 
 const Dialogs = (props) => {
-	debugger;
-	let userDialog = props.dialogUsers.map(user => <DialogUser id={user.id} name={user.name} src={user.src} />);
+	let userDialog = props.dialogUsers.map(user => <DialogUser key={user.id} name={user.name} src={user.src} />);
 
 	let newDialogMessage = React.createRef();
 
@@ -34,7 +33,7 @@ const Dialogs = (props) => {
 							Groot
 						</div>
 					</div>
-					<Dialog dialogMessages={props.dialogMessages} />
+					<DialogContainer />
 					<div className={styles.newPost}>
 						<textarea ref={newDialogMessage} className={styles.message} onChange={onMessageChange} value={props.dialogTextarea} placeholder="Type your message here..." />
 						<button onClick={addNewMessage} className={styles.button}>Send</button>

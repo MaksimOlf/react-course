@@ -20,6 +20,9 @@ const Navigate = (props) => {
 					<NavLink to="/music" activeClassName={styles.active}>Music</NavLink>
 				</li>
 				<li className={styles.navigateLink}>
+					<NavLink to="/findUsers" activeClassName={styles.active}>FindUsers</NavLink>
+				</li>
+				<li className={styles.navigateLink}>
 					<NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink>
 				</li>
 			</ul>

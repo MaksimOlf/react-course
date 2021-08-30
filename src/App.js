@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
+import FindUsers from './components/FindUsers/FindUsers';
 import Settings from './components/Settings/Settings';
 
 
@@ -17,12 +18,13 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Sidebar data={props.state.sideBar} />
+        <Sidebar />
         <div className='content'>
-          <Route path="/profile" render={ () => <Profile store={props.store}/>} />
-          <Route path="/dialogs" render={ () => <DialogsContainer store={props.store} />} />
+          <Route path="/profile" render={ () => <Profile />} />
+          <Route path="/dialogs" render={ () => <DialogsContainer />} />
           <Route path="/news" render={ () => <News />} />
           <Route path="/music" render={ () => <Music />} />
+          <Route path="/findUsers" render={ () => <FindUsers />} />
           <Route path="/settings" render={ () => <Settings />} />
         </div>
       </div>

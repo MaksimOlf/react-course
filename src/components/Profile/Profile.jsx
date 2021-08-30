@@ -38,7 +38,7 @@ const Profile = (props) => {
 					</tr>
 				</table>
 			</div>
-			<PostsContainer store={props.store} />
+			<PostsContainer />
 		</div>
 	)
 }

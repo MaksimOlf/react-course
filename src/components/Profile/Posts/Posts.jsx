@@ -5,7 +5,7 @@ import styles from './Posts.module.css';
 
 const Posts = (props) => {
 
-	let dialogPost = props.infoPosts.map(p => <Post nLikes={p.nLikes} name={p.name} text={p.text} src={p.src} />);
+	let dialogPost = props.infoPosts.map(p => <Post key={p.id} nLikes={p.nLikes} name={p.name} text={p.text} src={p.src} />);
 
 	let newPostElement = React.createRef();
 
