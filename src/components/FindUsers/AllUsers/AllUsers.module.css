@@ -5,3 +5,68 @@
 	flex-wrap: wrap;
 	margin: 15px -10px;
 }
+
+.user {
+	flex: 0 0 45%;
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(245, 193, 247);
+	border-radius: 10px;
+	padding: 20px;
+	margin: 10px;
+}
+.userLeft {
+	display: flex;
+	flex-direction: column;
+	margin-right: 20px;
+}
+.image {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+.follow {
+	font-size: 16px;
+	color: #fff;
+	background-color: #000;
+	padding: 4px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+.userRight {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.userName {
+	font-size: 26px;
+	background-color: rgb(247, 214, 248);
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.location {
+	font-size: 20px;
+	background-color: rgb(247, 214, 248);
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.country {
+	font-size: 16px;
+	padding-right: 10px;
+}
+.city {
+	font-size: 14px;
+}
+.userStatus {
+	font-size: 16px;
+	background-color: rgb(247, 214, 248);
+	padding: 5px;
+	border-radius: 5px;
+	word-break: break-word;
+}
