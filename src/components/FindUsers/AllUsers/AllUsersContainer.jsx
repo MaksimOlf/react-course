@@ -51,28 +51,6 @@ let mapStateToProps = (state) => {
 	}
 };
 
-// let mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		follow: (userId) => {
-// 			dispatch(followAC(userId));
-// 		},
-// 		unFollow: (userId) => {
-// 			dispatch(unFollowAC(userId));
-// 		},
-// 		setUsers: (users) => {
-// 			dispatch(setUsersAC(users));
-// 		},
-// 		setCurrentPage: (currentPage) => {
-// 			dispatch(setCurrentPageAC(currentPage));
-// 		},
-// 		setUsersTotalCount: (totalCount) => {
-// 			dispatch(setUsersTotalCountAC(totalCount));
-// 		},
-// 		toggleIsFetching: (isFetching) => {
-// 			dispatch(toggleIsFetchingAC(isFetching));
-// 		},
-// 	}
-// };
 
 
 
