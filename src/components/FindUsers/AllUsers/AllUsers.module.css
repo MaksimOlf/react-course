@@ -13,6 +13,11 @@
 	transition: all 0.8s ease 0s;
 }
 
+.preloader {
+	width: 80px;
+	height: 80px;
+}
+
 .paggination {
 	flex: 1 1 100%;
 	display: flex;
