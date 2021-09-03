@@ -23,7 +23,7 @@ let AllUsers = (props) => {
 					<div className={styles.user} key={user.id}>
 						<div className={styles.userLeft}>
 							<NavLink to={`/profile/${user.id}`}>
-								<img className={styles.image} src={user.photos.small != null ? user.photos.small : default_avatar} />
+								<img className={styles.image} src={user.photos.small != null ? user.photos.small : default_avatar} alt='Avatar not found' />
 							</NavLink>
 							{user.followed ? <button onClick={() => { props.unFollow(user.id) }} className={styles.follow}>unfollow</button>
 								: <button onClick={() => { props.follow(user.id) }} className={styles.follow}>follow</button>}

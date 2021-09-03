@@ -4,7 +4,7 @@ import styles from './Post.module.css'
 
 const Post = (props) => {
 	return (
-		<div class={styles.post}>
+		<div className={styles.post}>
 			<div className={styles.message}>
 				<div className={styles.text}>
 					{props.text}
@@ -14,7 +14,7 @@ const Post = (props) => {
 						{props.nLikes}
 					</div>
 					<button className={styles.likeButton}>
-						<i class="far fa-heart"></i>
+						<i className="far fa-heart"></i>
 						like
 					</button>
 				</div>

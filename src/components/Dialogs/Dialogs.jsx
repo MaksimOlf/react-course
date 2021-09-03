@@ -28,7 +28,7 @@ const Dialogs = (props) => {
 				</div>
 				<div className={styles.dialogMessages}>
 					<div className={styles.currentUser}>
-						<img className={styles.currentImage} src="https://gamehag.com/static/avatar/5194053_max.jpg" />
+						<img className={styles.currentImage} src="https://gamehag.com/static/avatar/5194053_max.jpg" alt="Avatar not found" />
 						<div className={styles.currentName}>
 							Groot
 						</div>

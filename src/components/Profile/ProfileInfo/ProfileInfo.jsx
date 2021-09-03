@@ -33,51 +33,53 @@ const ProfileInfo = (props) => {
 					{props.profile.fullName}
 				</div>
 				<table className={styles.profileInfo}>
-					<tr>
-						<td><span>lookingForAJob</span></td>
-						<td>{jobLoocking}</td>
-					</tr>
-					<tr>
-						<td><span>lookingForAJobDescription</span></td>
-						<td>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>About me</span></td>
-						<td>{props.profile.aboutMe ? props.profile.aboutMe : '-'}</td>
-					</tr>
-					<div className={styles.contactsTitle}>Contacts</div>
-					<tr>
-						<td><span>facebook</span></td>
-						<td>{props.profile.contacts.facebook ? props.profile.contacts.facebook : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>website</span></td>
-						<td>{props.profile.contacts.website ? props.profile.contacts.website : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>vk</span></td>
-						<td>{props.profile.contacts.vk ? props.profile.contacts.vk : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>twitter</span></td>
-						<td>{props.profile.contacts.twitter ? props.profile.contacts.twitter : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>instagram</span></td>
-						<td>{props.profile.contacts.instagram ? props.profile.contacts.instagram : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>youtube</span></td>
-						<td>{props.profile.contacts.youtube ? props.profile.contacts.youtube : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>github</span></td>
-						<td>{props.profile.contacts.github ? props.profile.contacts.github : '-'}</td>
-					</tr>
-					<tr>
-						<td><span>mainLink</span></td>
-						<td>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '-'}</td>
-					</tr>
+					<tbody>
+						<tr>
+							<td><span>lookingForAJob</span></td>
+							<td>{jobLoocking}</td>
+						</tr>
+						<tr>
+							<td><span>lookingForAJobDescription</span></td>
+							<td>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>About me</span></td>
+							<td>{props.profile.aboutMe ? props.profile.aboutMe : '-'}</td>
+						</tr>
+						<tr className={styles.contactsTitle}><td>Contacts</td></tr>
+						<tr>
+							<td><span>facebook</span></td>
+							<td>{props.profile.contacts.facebook ? props.profile.contacts.facebook : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>website</span></td>
+							<td>{props.profile.contacts.website ? props.profile.contacts.website : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>vk</span></td>
+							<td>{props.profile.contacts.vk ? props.profile.contacts.vk : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>twitter</span></td>
+							<td>{props.profile.contacts.twitter ? props.profile.contacts.twitter : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>instagram</span></td>
+							<td>{props.profile.contacts.instagram ? props.profile.contacts.instagram : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>youtube</span></td>
+							<td>{props.profile.contacts.youtube ? props.profile.contacts.youtube : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>github</span></td>
+							<td>{props.profile.contacts.github ? props.profile.contacts.github : '-'}</td>
+						</tr>
+						<tr>
+							<td><span>mainLink</span></td>
+							<td>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '-'}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>

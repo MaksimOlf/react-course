@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import './components/null.css';
-import Header from './components/Header/Header';
+import HeaderComponent from './components/Header/HeaderContainer';
 import Sidebar from './components/Sidebar/Sidebar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -17,7 +17,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderComponent />
         <Sidebar />
         <div className='content'>
           <Route path="/profile/:userId?" render={ () => <ProfileContainer />} />
