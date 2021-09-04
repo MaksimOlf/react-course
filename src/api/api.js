@@ -20,16 +20,16 @@ export const usersAPI = {
 	},
 
 	authMe() {
-		return axios.get(`auth/me`)
+		return instance.get(`auth/me`);
 	},
 
 
 	unFollowUsers(userID) {
-		return instance.delete(`follow/${userID}`)
+		return instance.delete(`follow/${userID}`);
 	},
 
 
 	FollowUsers(userID) {
-		return instance.post(`follow/${userID}`)
+		return instance.post(`follow/${userID}`);
 	},
 }
