@@ -4,7 +4,6 @@ import styles from './Header.module.css';
 
 
 const Header = (props) => {
-	debugger;
 	return (
 		<header className={styles.appHeader}>
 			<NavLink to={`/profile`}>

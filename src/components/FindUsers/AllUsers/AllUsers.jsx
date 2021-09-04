@@ -3,6 +3,7 @@ import styles from './AllUsers.module.css';
 import { NavLink } from 'react-router-dom';
 
 import default_avatar from '../../../assets/images/default_avatar.jpg';
+import { unFollowUsers, FollowUsers } from '../../../api/api';
 
 let AllUsers = (props) => {
 
@@ -25,8 +26,26 @@ let AllUsers = (props) => {
 							<NavLink to={`/profile/${user.id}`}>
 								<img className={styles.image} src={user.photos.small != null ? user.photos.small : default_avatar} alt='Avatar not found' />
 							</NavLink>
-							{user.followed ? <button onClick={() => { props.unFollow(user.id) }} className={styles.follow}>unfollow</button>
-								: <button onClick={() => { props.follow(user.id) }} className={styles.follow}>follow</button>}
+							{user.followed ? <button disabled={props.followInProgress.some(id => id === user.id)} onClick={() => {
+								props.toggleFollowInProgress(true, user.id);
+								unFollowUsers(user.id)
+									.then(response => {
+										if (response.data.resultCode === 0) {
+											props.unFollow(user.id)
+											props.toggleFollowInProgress(false, user.id);
+										}
+									});
+							}} className={styles.follow}>unfollow</button>
+								: <button disabled={props.followInProgress.some(id => id === user.id)} onClick={() => {
+									props.toggleFollowInProgress(true, user.id);
+									FollowUsers(user.id)
+										.then(response => {
+											if (response.data.resultCode === 0) {
+												props.follow(user.id);
+												props.toggleFollowInProgress(false, user.id);
+											}
+										});
+								}} className={styles.follow}>follow</button>}
 						</div>
 						<div className={styles.userRight}>
 							<span className={styles.userName}>
@@ -34,10 +53,10 @@ let AllUsers = (props) => {
 							</span>
 							<div className={styles.location}>
 								<span className={styles.country}>
-									{'user.location.country'}
+									{'Country'}
 								</span>
 								<span className={styles.city}>
-									{'user.location.city'}
+									{'City'}
 								</span>
 							</div>
 							<span className={styles.userStatus}>

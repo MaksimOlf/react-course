@@ -60,6 +60,17 @@
 	border-radius: 10px;
 	margin-top: 10px;
 }
+
+.follow:disabled {
+	font-size: 16px;
+	color: #000;
+	background-color: #444;
+	padding: 4px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
 .userRight {
 	display: flex;
 	flex-direction: column;
