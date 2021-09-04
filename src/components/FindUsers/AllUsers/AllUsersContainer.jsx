@@ -1,32 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleFollowInProgress, toggleIsFetching, setUsersTotalCount, setCurrentPage, follow, unFollow, setUsers } from './../../../redux/findUsersReducer';
-import { getUsers } from '../../../api/api';
+
+import { getUsersThunkCreator, setCurrentPage, followSuccess, unFollowSuccess, follow, unFollow } from './../../../redux/findUsersReducer';
 import AllUsers from './AllUsers';
 import Preloader from '../../../components/common/preloader/preloader';
 
 
 class AllUsersContainer extends React.Component {
 
-	componentDidMount() {
-		this.props.toggleIsFetching(true);
-		getUsers(this.props.currentPage, this.props.pageSize)
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.items);
-				this.props.setUsersTotalCount(response.totalCount);
-			});
-	}
+	componentDidMount() { this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize) }
 
 	onPageChanged = (page) => {
-		this.props.toggleIsFetching(true);
+		this.props.getUsersThunkCreator(page, this.props.pageSize)
 		this.props.setCurrentPage(page);
-		getUsers(page, this.props.pageSize)
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.items);
-			});
 	}
 
 	render() {
@@ -37,9 +24,10 @@ class AllUsersContainer extends React.Component {
 				totalUsersCount={this.props.totalUsersCount}
 				currentPage={this.props.currentPage}
 				onPageChanged={this.onPageChanged}
+				followSuccess={this.props.followSuccess}
+				unFollowSuccess={this.props.unFollowSuccess}
 				follow={this.props.follow}
 				unFollow={this.props.unFollow}
-				toggleFollowInProgress={this.props.toggleFollowInProgress}
 				followInProgress={this.props.followInProgress} />
 		</>
 	}
@@ -60,11 +48,10 @@ let mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
+	followSuccess,
+	unFollowSuccess,
 	follow,
 	unFollow,
-	setUsers,
 	setCurrentPage,
-	setUsersTotalCount,
-	toggleIsFetching,
-	toggleFollowInProgress,
+	getUsersThunkCreator,
 })(AllUsersContainer);
