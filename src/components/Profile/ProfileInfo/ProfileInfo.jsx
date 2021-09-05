@@ -5,10 +5,9 @@ import Preloader from '../../common/preloader/preloader';
 import defaultAvatar from '../../../assets/images/default_avatar.jpg';
 import defaultLarge from '../../../assets/images/profileDefaultLarge.jpg';
 
-
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
-
 	if (!props.profile) {
 		return <Preloader />
 	}
@@ -19,7 +18,6 @@ const ProfileInfo = (props) => {
 	} else {
 		jobLoocking = '-';
 	}
-
 	return (
 		<div>
 			<div className={styles.topImage}>
@@ -32,6 +30,7 @@ const ProfileInfo = (props) => {
 				<div className={styles.profileName}>
 					{props.profile.fullName}
 				</div>
+				<ProfileStatus userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
 				<table className={styles.profileInfo}>
 					<tbody>
 						<tr>

@@ -1,0 +1,21 @@
+.currentStatus {
+	grid-area: currentStatus;
+}
+
+.status {
+	min-height: 40px;
+	font-size: 20px;
+	font-style: italic;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: rgb(245, 193, 247);
+}
+
+.input input {
+	width: 100%;
+	font-size: 20px;
+	font-style: italic;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: rgb(245, 193, 247);
+}

@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 
 import { getUsersThunkCreator, setCurrentPage, followSuccess, unFollowSuccess, follow, unFollow } from './../../../redux/findUsersReducer';
 import AllUsers from './AllUsers';
 import Preloader from '../../../components/common/preloader/preloader';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 
 class AllUsersContainer extends React.Component {
@@ -44,14 +46,15 @@ let mapStateToProps = (state) => {
 	}
 };
 
+export default compose(
+	connect(mapStateToProps, {
+		followSuccess,
+		unFollowSuccess,
+		follow,
+		unFollow,
+		setCurrentPage,
+		getUsersThunkCreator,
+	}),
+	withAuthRedirect,
+)(AllUsersContainer);
 
-
-
-export default connect(mapStateToProps, {
-	followSuccess,
-	unFollowSuccess,
-	follow,
-	unFollow,
-	setCurrentPage,
-	getUsersThunkCreator,
-})(AllUsersContainer);

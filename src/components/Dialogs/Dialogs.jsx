@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import DialogContainer from './Dialog/DialogContainer';
+import { Redirect } from 'react-router-dom';
 
 
 const Dialogs = (props) => {
@@ -19,6 +20,7 @@ const Dialogs = (props) => {
 		let text = newDialogMessage.current.value;
 		props.updateMessage(text);
 	}
+
 
 	return (
 		<div className={styles.dialogContent}>

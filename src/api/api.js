@@ -15,21 +15,31 @@ export const usersAPI = {
 		return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data);
 	},
 
-	getUser(userId) {
-		return instance.get(`profile/${userId}`).then(response => response.data);
-	},
-
 	authMe() {
 		return instance.get(`auth/me`);
 	},
-
 
 	unFollowUsers(userID) {
 		return instance.delete(`follow/${userID}`);
 	},
 
-
 	FollowUsers(userID) {
 		return instance.post(`follow/${userID}`);
+	},
+}
+
+
+export const profileAPI = {
+
+	getUser(userId) {
+		return instance.get(`profile/${userId}`);
+	},
+
+	getStatus(userId) {
+		return instance.get(`profile/status/${userId}`);
+	},
+
+	updateStatus(userStatus) {
+		return instance.put(`profile/status`, {status: userStatus,});
 	},
 }
