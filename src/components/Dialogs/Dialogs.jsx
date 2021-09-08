@@ -1,26 +1,13 @@
 import React from 'react';
+import { Form, Field } from 'react-final-form'
 
 import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import DialogContainer from './Dialog/DialogContainer';
-import { Redirect } from 'react-router-dom';
 
 
 const Dialogs = (props) => {
 	let userDialog = props.dialogUsers.map(user => <DialogUser key={user.id} name={user.name} src={user.src} />);
-
-	let newDialogMessage = React.createRef();
-
-	let addNewMessage = () => {
-		props.addMessage();
-		newDialogMessage.current.value = '';
-	}
-
-	let onMessageChange = () => {
-		let text = newDialogMessage.current.value;
-		props.updateMessage(text);
-	}
-
 
 	return (
 		<div className={styles.dialogContent}>
@@ -36,14 +23,32 @@ const Dialogs = (props) => {
 						</div>
 					</div>
 					<DialogContainer />
-					<div className={styles.newPost}>
-						<textarea ref={newDialogMessage} className={styles.message} onChange={onMessageChange} value={props.dialogTextarea} placeholder="Type your message here..." />
-						<button onClick={addNewMessage} className={styles.button}>Send</button>
-					</div>
+					<NewDialogsMessage addMessage={props.addMessage} dialogTextarea={props.dialogTextarea} updateMessage={props.updateMessage} />
 				</div>
 			</div>
 		</div >
 	)
 }
+
+const NewDialogsMessage = (props) => {
+
+	let addNewMessage = (values) => {
+		props.addMessage(values.newMessageText);
+		values.newMessageText = '';
+	}
+
+	return (
+		<Form onSubmit={addNewMessage}>
+			{({ handleSubmit, submitting }) =>
+				<form className={styles.newPost} onSubmit={handleSubmit}>
+					<Field component={'textarea'} value={props.dialogTextarea} name="newMessageText"
+						className={styles.message} placeholder="Type your message here..." />
+					<button type="submit" className={styles.button} disabled={submitting}>Send</button>
+				</form>
+			}
+		</Form>
+	)
+}
+
 
 export default Dialogs;

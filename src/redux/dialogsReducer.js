@@ -1,6 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const MESSAGE_CHANGE = "MESSAGE-CHANGE";
-
 
 
 let initialState = {
@@ -30,26 +28,16 @@ let initialState = {
 		{ id: 11, text: "Latur quodti eaque dur odit sequi deserunt." },
 		{ id: 12, text: "Zonsequatur dicta incidudoloribus vero molestaccusantium consectetur odit sequi deserunt." },
 	],
-	dialogTextarea: '',
 }
 
 
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_MESSAGE: {
-			let newPost = {
-				id: 13,
-				text: state.dialogTextarea,
-			}
+			let body = action.newMessageText;
 			return {
 				...state,
-				dialogMessages: [...state.dialogMessages, newPost],
-				dialogTextarea: '',
-			};
-		}
-		case MESSAGE_CHANGE: {
-			return {...state,
-			dialogTextarea: action.text,
+				dialogMessages: [...state.dialogMessages, { id: 13, text: body}],
 			};
 		}
 		default:
@@ -59,13 +47,9 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 
-export const addMessageActionCreator = () => ({
+export const addMessageActionCreator = (newMessageText) => ({
 		type: ADD_MESSAGE,
-	})
-
-export const onMessageChangeActionCreator = (text) => ({
-		type: MESSAGE_CHANGE,
-		text,
+		newMessageText,
 	})
 
 export default dialogsReducer;
