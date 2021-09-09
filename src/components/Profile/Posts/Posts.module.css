@@ -8,15 +8,39 @@
 	align-items: center;
 }
 
-.text {
+.field {
 	flex: 1 1 auto;
+}
+
+.text {
+	position: relative;
+	width: 100%;
+	margin: 0 20px 20px 0;
+}
+
+.newPost span {
+	position: absolute;
+	left: 0px;
+	bottom: -20px;
+	color: #800;
+	font-weight: bold;
+}
+
+.textarea {
+	width: 100%;
+	min-height: 150px;
 	font-size: 16px;
 	resize: none;
-	padding: 10px 10px 150px 10px;
-	margin: 0 20px 20px 0;
+	padding: 10px;
 	border-radius: 10px;
 	background-color: rgb(248, 220, 242);
 }
+
+.textareaError {
+	outline: none;
+	box-shadow: 0 0 0 2pt #900;
+}
+
 .text::placeholder {
 	font-family: Arial;
 	color: #000;
@@ -30,5 +54,5 @@
 	text-transform: uppercase;
 	border-radius: 10px;
 	margin-bottom: 20px;
-	align-self: flex-end;
+	align-self: center;
 }

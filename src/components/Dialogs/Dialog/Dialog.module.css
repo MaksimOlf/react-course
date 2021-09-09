@@ -1,5 +1,5 @@
 .messagesColumn {
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 	align-self: flex-start;
 	display: flex;
 	flex-direction: column;

@@ -4,6 +4,7 @@ import { Form, Field } from 'react-final-form'
 import styles from './Dialogs.module.css';
 import DialogUser from './DialogUser/DialogUser';
 import DialogContainer from './Dialog/DialogContainer';
+import { composeValidators, required, minLength, maxLength } from '../../utils/validators';
 
 
 const Dialogs = (props) => {
@@ -23,7 +24,7 @@ const Dialogs = (props) => {
 						</div>
 					</div>
 					<DialogContainer />
-					<NewDialogsMessage addMessage={props.addMessage} dialogTextarea={props.dialogTextarea} updateMessage={props.updateMessage} />
+					<NewDialogsMessage addMessage={props.addMessage} />
 				</div>
 			</div>
 		</div >
@@ -34,15 +35,21 @@ const NewDialogsMessage = (props) => {
 
 	let addNewMessage = (values) => {
 		props.addMessage(values.newMessageText);
-		values.newMessageText = '';
 	}
 
 	return (
 		<Form onSubmit={addNewMessage}>
 			{({ handleSubmit, submitting }) =>
 				<form className={styles.newPost} onSubmit={handleSubmit}>
-					<Field component={'textarea'} value={props.dialogTextarea} name="newMessageText"
-						className={styles.message} placeholder="Type your message here..." />
+					<Field name="newMessageText" className={styles.message} validate={composeValidators(required, minLength(3), maxLength(300))} >
+						{({ input, meta }) => (
+							<div className={styles.text}>
+								<textarea {...input} type="textarea" className={styles.textarea + (meta.error && meta.touched ? ' ' + styles.textareaError : '')}
+									placeholder="Type your message here..." />
+								{meta.error && meta.touched && <span><br />{meta.error}</span>}
+							</div>
+						)}
+					</Field>
 					<button type="submit" className={styles.button} disabled={submitting}>Send</button>
 				</form>
 			}

@@ -1,5 +1,5 @@
 .dialogMessage {
-	width: auto;
+	overflow-wrap: anywhere;
 	font-size: 20px;
 	background-color: rgb(248, 220, 242);
 	padding: 10px;
