@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form'
+import { Form, Field } from 'react-final-form';
 import { login } from '../../redux/authReducer';
 
 import styles from './Login.module.css';
@@ -15,18 +15,17 @@ const Login = (props) => {
 	return (
 		<div className={styles.loginPage} >
 			<h2 className={styles.loginTitle} >Login</h2>
-			<ConnectedLoginForm />
+			<ConnectedLoginForm captchaURL={props.captchaURL} />
 		</div>
 	)
 }
 
 const LoginForm = (props) => {
-
-	const inLogin = (values) => { props.login(values.email, values.password, values.rememberMe) };
+	const inLogin = values => props.login(values.email, values.password, values.rememberMe, values.captcha);
 
 	return (
 		<Form onSubmit={inLogin}>
-			{({ handleSubmit, submitting }) => (
+			{({ handleSubmit, submitError }) => (
 				<form onSubmit={handleSubmit} className={styles.loginForm}>
 					<Field name="email" className={styles.loginBlock} validate={composeValidators(required, minLength(3), maxLength(30))} >
 						{({ input, meta }) => (
@@ -54,7 +53,18 @@ const LoginForm = (props) => {
 							</div>
 						)}
 					</Field>
-					<button type="submit" className={styles.button} disabled={submitting} >Login</button>
+					{submitError && <div className={styles.error}>{submitError}</div>}
+					{props.captchaURL && <div className={styles.captcha}>
+						<img className={styles.captchaImage} alt="captcha" src={props.captchaURL} />
+						<Field name="captcha">
+							{({ input }) => (
+								<div className={styles.captchaBlock}>
+									<input className={styles.captchaInput} {...input} type="text" placeholder="Введите символы на картинке" />
+								</div>
+							)}
+						</Field>
+					</div>}
+					<button type="submit" className={styles.button} >Login</button>
 				</form>
 			)}
 		</Form >
@@ -64,6 +74,7 @@ const LoginForm = (props) => {
 let mapStateToProps = (state) => {
 	return {
 		isAuth: state.auth.isAuth,
+		captchaURL: state.auth.captchaURL,
 	}
 };
 

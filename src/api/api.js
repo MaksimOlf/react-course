@@ -34,6 +34,11 @@ export const usersAPI = {
 	},
 }
 
+export const securityAPI = {
+	getCaptcha() {
+		return instance.get(`security/get-captcha-url`);
+	},
+}
 
 export const profileAPI = {
 
