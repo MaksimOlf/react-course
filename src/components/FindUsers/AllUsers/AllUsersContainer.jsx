@@ -7,6 +7,10 @@ import { getUsersThunkCreator, setCurrentPage, followSuccess, unFollowSuccess, f
 import AllUsers from './AllUsers';
 import Preloader from '../../../components/common/preloader/preloader';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import {
+	getStateUsersSelector, getStatePageSize, getStateTotalUsersCount,
+	getStateCurrentPage, getStateIsFetching, getStateFollowInProgress
+} from '../../../redux/usersSelectors';
 
 
 class AllUsersContainer extends React.Component {
@@ -37,12 +41,12 @@ class AllUsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
 	return {
-		users: state.findUsers.users,
-		pageSize: state.findUsers.pageSize,
-		totalUsersCount: state.findUsers.totalUsersCount,
-		currentPage: state.findUsers.currentPage,
-		isFetching: state.findUsers.isFetching,
-		followInProgress: state.findUsers.followInProgress,
+		users: getStateUsersSelector(state),
+		pageSize: getStatePageSize(state),
+		totalUsersCount: getStateTotalUsersCount(state),
+		currentPage: getStateCurrentPage(state),
+		isFetching: getStateIsFetching(state),
+		followInProgress: getStateFollowInProgress(state),
 	}
 };
 

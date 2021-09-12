@@ -15,3 +15,11 @@
   grid-area: content;
   background-color: rgb(147, 119, 148);
 }
+
+.preloader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
