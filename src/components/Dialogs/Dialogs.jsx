@@ -9,7 +9,6 @@ import { composeValidators, required, minLength, maxLength } from '../../utils/v
 
 const Dialogs = (props) => {
 	let userDialog = props.dialogUsers.map(user => <DialogUser key={user.id} name={user.name} src={user.src} />);
-
 	return (
 		<div className={styles.dialogContent}>
 			<div className={styles.dialogRow}>
@@ -35,6 +34,7 @@ const NewDialogsMessage = (props) => {
 
 	let addNewMessage = (values) => {
 		props.addMessage(values.newMessageText);
+		values.newMessageText = '';
 	}
 
 	return (

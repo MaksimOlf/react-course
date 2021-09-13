@@ -2,7 +2,7 @@
 	flex: 0 1 auto;
 	align-self: flex-start;
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	padding: 20px;
 	overflow-y: auto;
 }

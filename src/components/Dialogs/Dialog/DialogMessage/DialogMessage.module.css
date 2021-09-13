@@ -7,3 +7,7 @@
 	max-width: 70%;
 	margin: 20px 0;
 }
+
+.myDialogMessage {
+	align-self: flex-end;
+}

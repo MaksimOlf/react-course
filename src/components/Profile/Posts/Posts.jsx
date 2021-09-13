@@ -6,9 +6,10 @@ import Post from './Post/Post';
 import styles from './Posts.module.css';
 
 
-const Posts = (props) => {
-
-	let dialogPost = props.infoPosts.map(p => <Post key={p.id} nLikes={p.nLikes} name={p.name} text={p.text} src={p.src} />);
+const Posts = React.memo(props => {
+	let dialogPost = [...props.infoPosts]
+		.reverse()
+		.map(p => <Post key={p.id} nLikes={p.nLikes} name={p.name} text={p.text} src={p.src} />);
 
 	return (
 		<div className={styles.posts}>
@@ -16,7 +17,7 @@ const Posts = (props) => {
 			{dialogPost}
 		</div>
 	)
-}
+})
 
 const NewProfilePost = (props) => {
 

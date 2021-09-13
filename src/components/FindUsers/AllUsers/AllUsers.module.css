@@ -6,13 +6,6 @@
 	margin: 10px -10px;
 }
 
-.selectedPage {
-	font-weight: 700;
-	background-color: rgb(245, 193, 247);
-	border-radius: 50%;
-	transition: all 0.8s ease 0s;
-}
-
 .preloader {
 	width: 80px;
 	height: 80px;
@@ -21,14 +14,22 @@
 .paggination {
 	flex: 1 1 100%;
 	display: flex;
-	flex-wrap: wrap;
-	padding: 15px 0;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
 	text-align: center;
 }
 
+.selectedPage {
+	font-weight: 700;
+	background-color: rgb(245, 193, 247);
+	border-radius: 10px;
+	transition: all 0.8s ease 0s;
+}
+
 .paggination span {
-	font-size: 24px;
-	padding: 10px 20px;
+	font-size: 18px;
+	padding: 10px 15px;
 }
 
 .user {

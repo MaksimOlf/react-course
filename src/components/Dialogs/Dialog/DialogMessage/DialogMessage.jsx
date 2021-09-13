@@ -3,7 +3,7 @@ import styles from './DialogMessage.module.css';
 
 const DialogMessage = (props) => {
 	return (
-		<div className={styles.dialogMessage}>
+		<div className={styles.dialogMessage + (props.myMessage === true ? ' ' + styles.myDialogMessage : '')}>
 			{props.text}
 		</div>
 	)
