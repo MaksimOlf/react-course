@@ -7,13 +7,19 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const FOLLOW_IN_PROGRESS = 'FOLLOW_IN_PROGRESS';
+const GET_FRIENDS = 'GET_FRIENDS';
+const SET_CURRENT_FRIENDS_PAGE = 'SET_CURRENT_FRIENDS_PAGE';
+const SET_FRIENDS_TOTAL_COUNT = 'SET_FRIENDS_TOTAL_COUNT';
 
 let initialState = {
-		users: [
-	],
+	users: [],
+	friends: [],
 	pageSize: 6,
 	totalUsersCount: 0,
 	currentPage: 1,
+	pageFriendsSize: 6,
+	totalFriendsCount: 0,
+	currentFriendsPage: 1,
 	isFetching: false,
 	followInProgress: [],
 }
@@ -46,6 +52,11 @@ const findUsersReducer = (state = initialState, action) => {
 				...state,
 				users: action.users,
 			}
+		case GET_FRIENDS:
+			return {
+				...state,
+				friends: action.friends,
+			}
 		case SET_CURRENT_PAGE:
 			return {
 				...state,
@@ -54,7 +65,17 @@ const findUsersReducer = (state = initialState, action) => {
 		case SET_USERS_TOTAL_COUNT:
 			return {
 				...state,
-				totalUsersCount: action.totalCount,
+				totalUsersCount: action.totalUsersCount,
+			}
+		case SET_CURRENT_FRIENDS_PAGE:
+			return {
+				...state,
+				currentFriendsPage: action.currentFriendsPage,
+			}
+		case SET_FRIENDS_TOTAL_COUNT:
+			return {
+				...state,
+				totalFriendsCount: action.totalFriendsCount,
 			}
 		case TOGGLE_IS_FETCHING:
 			return {
@@ -90,15 +111,30 @@ export const setUsers = (users) => ({
 		users,
 	})
 
+export const setFriends = (friends) => ({
+		type: GET_FRIENDS,
+		friends,
+	})
+
 export const setCurrentPage = (currentPage) => ({
 		type: SET_CURRENT_PAGE,
 		currentPage,
 	})
 
-export const setUsersTotalCount = (totalCount) => ({
+export const setUsersTotalCount = (totalUsersCount) => ({
 	type: SET_USERS_TOTAL_COUNT,
-	totalCount,
+	totalUsersCount,
 })
+
+export const setFriendsTotalCount = (totalFriendsCount) => ({
+	type: SET_FRIENDS_TOTAL_COUNT,
+	totalFriendsCount,
+})
+
+export const setCurrentFriendsPage = (currentFriendsPage) => ({
+		type: SET_CURRENT_FRIENDS_PAGE,
+		currentFriendsPage,
+	})
 
 export const toggleIsFetching = (isFetching) => ({
 	type: TOGGLE_IS_FETCHING,
@@ -119,6 +155,18 @@ export const getUsersThunkCreator = (currentPage, pageSize) =>  {
 				dispatch(toggleIsFetching(false));
 				dispatch(setUsers(response.items));
 				dispatch(setUsersTotalCount(response.totalCount));
+			});
+	}
+}
+
+export const getFriendsThunkCreator = (currentPage, pageFriendsSize) =>  {
+	return (dispatch) => {
+		dispatch(toggleIsFetching(true));
+		usersAPI.getFriends(currentPage, pageFriendsSize)
+			.then(response => {
+				dispatch(toggleIsFetching(false));
+				dispatch(setFriends(response.data.items));
+				dispatch(setFriendsTotalCount(response.data.totalCount));
 			});
 	}
 }

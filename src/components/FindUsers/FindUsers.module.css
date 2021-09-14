@@ -11,7 +11,12 @@
 	text-transform: uppercase;
 }
 
-.moreUsers {
+.buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+.FindUsersButton {
 	width: 200px;
 	color: #fff;
 	background-color: #000;

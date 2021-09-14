@@ -15,6 +15,10 @@ export const usersAPI = {
 		return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data);
 	},
 
+	getFriends(currentFriendsPage, pageFriendsSize) {
+		return instance.get(`users?page=${currentFriendsPage}&count=${pageFriendsSize}&friend=true`)
+	},
+
 	authMe() {
 		return instance.get(`auth/me`);
 	},

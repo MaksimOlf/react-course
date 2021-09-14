@@ -6,7 +6,6 @@ import default_avatar from '../../../assets/images/default_avatar.jpg';
 
 
 let AllUsers = (props) => {
-
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 	let pages = [];
 	if (props.currentPage <= pagesCount) {
@@ -35,7 +34,8 @@ let AllUsers = (props) => {
 			<div className={styles.paggination} >
 				{pages.map(page => {
 					return (
-						<span onClick={(e) => { if (page !== '...') { props.onPageChanged(page) } }} className={props.currentPage === page && styles.selectedPage} >
+						<span onClick={(e) => { if (page !== '...') { props.onPageChanged(page) } }}
+							className={props.currentPage === page && styles.selectedPage} >
 							{page}
 						</span>)
 				})}
