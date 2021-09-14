@@ -11,7 +11,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
-import FindUsers from './components/FindUsers/FindUsers';
+import FindUsers from './components/FindUsers/FindUsersContainer';
 import Settings from './components/Settings/Settings';
 
 import { initializeApp } from '../src/redux/appReducer';
