@@ -1,99 +1,104 @@
-import { profileAPI } from '../api/api';
+import { profileAPI } from "../api/api";
 
-const ADD_POST = 'ADD-POST';
+const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
-const DELETE_POST = 'DELETE_POST';
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
-	infoPosts: [
-			{ id: 1, name: "Rocket", src: "https://cs-site.ru/uploads/posts/2020-09/1600253903_35.jpg", text: 'Nds kmk mkllewkm  kwem kewm kwem wem ekw!!!', nLikes: 23 },
-			{ id: 2, name: "Groot", src: "https://gamehag.com/static/avatar/5194053_max.jpg", text: 'I AM GROOT!!!', nLikes: 47 },
-		],
-	profile: null,
-	userStatus: '',
-}
+  infoPosts: [
+    {
+      id: 1,
+      name: "Rocket",
+      src: "https://cs-site.ru/uploads/posts/2020-09/1600253903_35.jpg",
+      text: "Nds kmk mkllewkm  kwem kewm kwem wem ekw!!!",
+      nLikes: 23,
+    },
+    {
+      id: 2,
+      name: "Groot",
+      src: "https://gamehag.com/static/avatar/5194053_max.jpg",
+      text: "I AM GROOT!!!",
+      nLikes: 47,
+    },
+  ],
+  profile: null,
+  userStatus: "",
+};
 
 const profileReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case ADD_POST: {
-			let newPost = {
-				id: 3,
-				name: "Maksim",
-				src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
-				text: action.newProfilePost,
-				nLikes: 0,
-			}
-			return {
-				...state,
-				infoPosts: [...state.infoPosts, newPost],
-			};
-		}
-		case DELETE_POST: {
-			return {
-				...state,
-				infoPosts: state.infoPosts.filter( p => p.id !== action.postId),
-			};
-		}
-		case SET_USER_PROFILE: {
-			return {
-				...state,
-				profile: action.profile,
-			};
-		}
-		case SET_STATUS: {
-			return {
-				...state,
-				userStatus: action.userStatus,
-			};
-		}
-		default:
-			return state;
-	}
-}
+  switch (action.type) {
+    case ADD_POST: {
+      let newPost = {
+        id: 3,
+        name: "Maksim",
+        src: "https://hsto.org/getpro/habr/post_images/585/18b/a98/58518ba9884cfa5c4bc1cd9053ef5b4d.png",
+        text: action.newProfilePost,
+        nLikes: 0,
+      };
+      return {
+        ...state,
+        infoPosts: [...state.infoPosts, newPost],
+      };
+    }
+    case DELETE_POST: {
+      return {
+        ...state,
+        infoPosts: state.infoPosts.filter((p) => p.id !== action.postId),
+      };
+    }
+    case SET_USER_PROFILE: {
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    }
+    case SET_STATUS: {
+      return {
+        ...state,
+        userStatus: action.userStatus,
+      };
+    }
+    default:
+      return state;
+  }
+};
 
 export const addPostActionCreator = (newProfilePost) => ({
-		type: ADD_POST,
-		newProfilePost,
-	})
+  type: ADD_POST,
+  newProfilePost,
+});
 
 export const deleteostActionCreator = (postId) => ({
-		type: DELETE_POST,
-		postId,
-	})
+  type: DELETE_POST,
+  postId,
+});
 
 export const setUserProfile = (profile) => ({
-		type: SET_USER_PROFILE,
-		profile,
-	})
+  type: SET_USER_PROFILE,
+  profile,
+});
 
 export const setUserStatus = (userStatus) => ({
-	type: SET_STATUS,
-	userStatus,
-})
+  type: SET_STATUS,
+  userStatus,
+});
 
+export const getUserProfile = (userId) => async (dispatch) => {
+  let response = await profileAPI.getUser(userId);
+  dispatch(setUserProfile(response.data));
+};
 
+export const getUserStatus = (userId) => async (dispatch) => {
+  let response = await profileAPI.getStatus(userId);
+  dispatch(setUserStatus(response.data));
+};
 
-export const getUserProfile = (userId) =>  {
-	return (dispatch) => {
-		profileAPI.getUser(userId).then(response => {dispatch(setUserProfile(response.data))});
-	}
-}
-
-export const getUserStatus = (userId) =>  {
-	return (dispatch) => {
-		profileAPI.getStatus(userId).then(response => {dispatch(setUserStatus(response.data))});
-	}
-}
-
-export const updateUserStatus = (userStatus) =>  {
-	return (dispatch) => {
-		profileAPI.updateStatus(userStatus).then(response => {
-			if (response.data.resultCode === 0) {
-				dispatch(setUserStatus(userStatus));
-			}
-		})
-	}
-}
+export const updateUserStatus = (userStatus) => async (dispatch) => {
+  let response = await profileAPI.updateStatus(userStatus);
+  if (response.data.resultCode === 0) {
+    dispatch(setUserStatus(userStatus));
+  }
+};
 
 export default profileReducer;

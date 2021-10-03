@@ -30,6 +30,7 @@
 .paggination span {
 	font-size: 18px;
 	padding: 10px 15px;
+	cursor: pointer;
 }
 
 .user,
