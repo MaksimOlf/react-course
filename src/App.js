@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./App.css";
@@ -38,7 +38,7 @@ class App extends Component {
       );
     }
     return (
-      <BrowserRouter>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <div className="app-wrapper">
           <HeaderComponent />
           <Sidebar />
@@ -63,7 +63,7 @@ class App extends Component {
             </div>
           </Suspense>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
