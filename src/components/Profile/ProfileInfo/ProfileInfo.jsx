@@ -12,20 +12,25 @@ const ProfileInfo = (props) => {
 		return <Preloader />
 	}
 
+	const onAvatarSelected = (e) => {
+		if (e.target.files.length) {
+			props.saveAvatar(e.target.files[0]);
+		}
+	}
+
 	let jobLoocking = '-';
 	if (props.profile.lookingForAJob === true) {
 		jobLoocking = 'Да';
-	} else {
-		jobLoocking = '-';
 	}
 	return (
 		<div>
 			<div className={styles.topImage}>
-				<img src={props.profile.photos.large ? props.profile.photos.large : defaultLarge} alt="Large photo not found" />
+				<img src={props.profile.photos.large ? props.profile.photos.large : defaultLarge} alt="" />
 			</div>
 			<div className={styles.profile}>
 				<div className={styles.profileImage}>
-					<img src={props.profile.photos.small ? props.profile.photos.small : defaultAvatar} alt="Small photo not found" />
+					<img src={props.profile.photos.small ? props.profile.photos.small : defaultAvatar} alt="" />
+					{props.isOwner? <input type={"file"} onChange={onAvatarSelected}/> : ""}
 				</div>
 				<div className={styles.profileName}>
 					{props.profile.fullName}

@@ -4,6 +4,7 @@ const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const DELETE_POST = "DELETE_POST";
+const UPDATE_USER_AVATAR = "UPDATE_USER_AVATAR";
 
 let initialState = {
   infoPosts: [
@@ -24,6 +25,7 @@ let initialState = {
   ],
   profile: null,
   userStatus: "",
+  userAvatar: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -59,6 +61,12 @@ const profileReducer = (state = initialState, action) => {
         userStatus: action.userStatus,
       };
     }
+    case UPDATE_USER_AVATAR: {
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photos },
+      };
+    }
     default:
       return state;
   }
@@ -84,6 +92,11 @@ export const setUserStatus = (userStatus) => ({
   userStatus,
 });
 
+export const updateUserAvatar = (photos) => ({
+  type: UPDATE_USER_AVATAR,
+  photos,
+});
+
 export const getUserProfile = (userId) => async (dispatch) => {
   let response = await profileAPI.getUser(userId);
   dispatch(setUserProfile(response.data));
@@ -98,6 +111,13 @@ export const updateUserStatus = (userStatus) => async (dispatch) => {
   let response = await profileAPI.updateStatus(userStatus);
   if (response.data.resultCode === 0) {
     dispatch(setUserStatus(userStatus));
+  }
+};
+
+export const saveAvatar = (userAvatar) => async (dispatch) => {
+  let response = await profileAPI.setUserAvatar(userAvatar);
+  if (response.data.resultCode === 0) {
+    dispatch(updateUserAvatar(response.data.data.photos));
   }
 };
 
