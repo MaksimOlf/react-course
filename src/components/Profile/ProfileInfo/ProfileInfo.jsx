@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './ProfileInfo.module.css';
 import Preloader from '../../common/preloader/preloader';
@@ -6,8 +6,12 @@ import defaultAvatar from '../../../assets/images/default_avatar.jpg';
 import defaultLarge from '../../../assets/images/profileDefaultLarge.jpg';
 
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import ProfileForm from './ProfileForm/ProfileForm';
 
 const ProfileInfo = (props) => {
+
+	const [infoChanged, isInfoChanged] = useState(false);
+
 	if (!props.profile) {
 		return <Preloader />
 	}
@@ -18,10 +22,6 @@ const ProfileInfo = (props) => {
 		}
 	}
 
-	let jobLoocking = '-';
-	if (props.profile.lookingForAJob === true) {
-		jobLoocking = 'Да';
-	}
 	return (
 		<div>
 			<div className={styles.topImage}>
@@ -36,55 +36,47 @@ const ProfileInfo = (props) => {
 					{props.profile.fullName}
 				</div>
 				<ProfileStatus userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
-				<table className={styles.profileInfo}>
-					<tbody>
-						<tr>
-							<td><span>lookingForAJob</span></td>
-							<td>{jobLoocking}</td>
-						</tr>
-						<tr>
-							<td><span>lookingForAJobDescription</span></td>
-							<td>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>About me</span></td>
-							<td>{props.profile.aboutMe ? props.profile.aboutMe : '-'}</td>
-						</tr>
-						<tr className={styles.contactsTitle}><td>Contacts</td></tr>
-						<tr>
-							<td><span>facebook</span></td>
-							<td>{props.profile.contacts.facebook ? props.profile.contacts.facebook : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>website</span></td>
-							<td>{props.profile.contacts.website ? props.profile.contacts.website : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>vk</span></td>
-							<td>{props.profile.contacts.vk ? props.profile.contacts.vk : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>twitter</span></td>
-							<td>{props.profile.contacts.twitter ? props.profile.contacts.twitter : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>instagram</span></td>
-							<td>{props.profile.contacts.instagram ? props.profile.contacts.instagram : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>youtube</span></td>
-							<td>{props.profile.contacts.youtube ? props.profile.contacts.youtube : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>github</span></td>
-							<td>{props.profile.contacts.github ? props.profile.contacts.github : '-'}</td>
-						</tr>
-						<tr>
-							<td><span>mainLink</span></td>
-							<td>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '-'}</td>
-						</tr>
-					</tbody>
-				</table>
+				{infoChanged ? <ProfileForm isInfoChanged={isInfoChanged} profile={props.profile} saveProfile={props.saveProfile}/> :
+					<div className={styles.profileInfo}>
+						<div className={styles.title}>My info</div>
+						<div className={styles.profileJobInfo}>
+							<div className={styles.profileInfoLeft}>
+								<div>Looking for a job</div>
+								<div>Looking for a job description</div>
+								<div>About me</div>
+							</div>
+							<div className={styles.profileInfoRight}>
+								<div>{props.profile.lookingForAJob ? "Yes" : "No"}</div>
+								<div>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : '-'}</div>
+								<div>{props.profile.aboutMe ? props.profile.aboutMe : '-'}</div>
+							</div>
+						</div>
+						<div className={styles.title}>Contacts</div>
+						<div className={styles.profileContacts}>		
+							<div className={styles.profileInfoLeft}>
+								<div>facebook</div>
+								<div>website</div>
+								<div>vk</div>
+								<div>twitter</div>
+								<div>instagram</div>
+								<div>youtube</div>
+								<div>github</div>
+								<div>mainLink</div>
+							</div>
+							<div className={styles.profileInfoRight}>
+								<div>{props.profile.contacts.facebook ? props.profile.contacts.facebook : '-'}</div>
+								<div>{props.profile.contacts.website ? props.profile.contacts.website : '-'}</div>
+								<div>{props.profile.contacts.vk ? props.profile.contacts.vk : '-'}</div>
+								<div>{props.profile.contacts.twitter ? props.profile.contacts.twitter : '-'}</div>
+								<div>{props.profile.contacts.instagram ? props.profile.contacts.instagram : '-'}</div>
+								<div>{props.profile.contacts.youtube ? props.profile.contacts.youtube : '-'}</div>
+								<div>{props.profile.contacts.github ? props.profile.contacts.github : '-'}</div>
+								<div>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '-'}</div>
+							</div>
+						</div>
+						{props.isOwner ? 
+						<button className={styles.button} onClick={() => isInfoChanged(true)}>Change</button> : ""}
+					</div>}
 			</div>
 		</div>
 	)

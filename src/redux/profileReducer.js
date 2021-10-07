@@ -25,7 +25,6 @@ let initialState = {
   ],
   profile: null,
   userStatus: "",
-  userAvatar: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -118,6 +117,16 @@ export const saveAvatar = (userAvatar) => async (dispatch) => {
   let response = await profileAPI.setUserAvatar(userAvatar);
   if (response.data.resultCode === 0) {
     dispatch(updateUserAvatar(response.data.data.photos));
+  }
+};
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId;
+  let response = await profileAPI.saveProfile(profile);
+  if (response.data.resultCode === 0) {
+    dispatch(getUserProfile(userId));
+  } else {
+    return { error: response.data.messages[0] };
   }
 };
 
