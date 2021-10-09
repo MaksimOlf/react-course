@@ -5,6 +5,7 @@ const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const DELETE_POST = "DELETE_POST";
 const UPDATE_USER_AVATAR = "UPDATE_USER_AVATAR";
+const GET_PROFILE_CHANGE_ERROR = "GET_PROFILE_CHANGE_ERROR";
 
 let initialState = {
   infoPosts: [
@@ -25,6 +26,7 @@ let initialState = {
   ],
   profile: null,
   userStatus: "",
+  profileInfoError: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -66,6 +68,12 @@ const profileReducer = (state = initialState, action) => {
         profile: { ...state.profile, photos: action.photos },
       };
     }
+    case GET_PROFILE_CHANGE_ERROR: {
+      return {
+        ...state,
+        profileInfoError: action.profileInfoError,
+      };
+    }
     default:
       return state;
   }
@@ -94,6 +102,11 @@ export const setUserStatus = (userStatus) => ({
 export const updateUserAvatar = (photos) => ({
   type: UPDATE_USER_AVATAR,
   photos,
+});
+
+export const getSetProfileError = (profileInfoError) => ({
+  type: GET_PROFILE_CHANGE_ERROR,
+  profileInfoError,
 });
 
 export const getUserProfile = (userId) => async (dispatch) => {
@@ -126,7 +139,7 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
   } else {
-    return { error: response.data.messages[0] };
+    dispatch(getSetProfileError(response.data.messages[0]));
   }
 };
 

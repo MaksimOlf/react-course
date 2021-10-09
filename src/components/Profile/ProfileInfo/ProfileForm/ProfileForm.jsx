@@ -3,14 +3,13 @@ import { Formik, Form, Field } from "formik";
 import styles from '../ProfileInfo.module.css';
 
 
-export const ProfileForm = ({isInfoChanged, profile, saveProfile}) => {
-
+export const ProfileForm = ({isInfoChanged, profile, saveProfile }) => {
 
 	return (	
 		<Formik
 			initialValues={profile}
-			onSubmit={(values) => {
-				saveProfile(values);
+			onSubmit={ (values) => {
+				saveProfile(values)
 				isInfoChanged(false);
 			}}
 		>

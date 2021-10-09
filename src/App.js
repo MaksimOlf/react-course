@@ -1,6 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { HashRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { Redirect, Switch } from "react-router";
 
 import "./App.css";
 import "./components/null.css";
@@ -50,16 +51,20 @@ class App extends Component {
             }
           >
             <div className="content">
-              <Route path="/login" render={() => <Login />} />
-              <Route
-                path="/profile/:userId?"
-                render={() => <ProfileContainer />}
-              />
-              <Route path="/dialogs" render={() => <DialogsContainer />} />
-              <Route path="/news" render={() => <News />} />
-              <Route path="/music" render={() => <Music />} />
-              <Route path="/findUsers" render={() => <FindUsers />} />
-              <Route path="/settings" render={() => <Settings />} />
+              <Switch>
+                <Route path="/login" render={() => <Login />} />
+                <Route
+                  path="/profile/:userId?"
+                  render={() => <ProfileContainer />}
+                />
+                <Route path="/dialogs" render={() => <DialogsContainer />} />
+                <Route path="/news" render={() => <News />} />
+                <Route path="/music" render={() => <Music />} />
+                <Route path="/findUsers" render={() => <FindUsers />} />
+                <Route path="/settings" render={() => <Settings />} />
+                <Redirect exact from="/" to="/profile" />
+                <Route path="*" render={() => <div>404 Not found</div>} />
+              </Switch>
             </div>
           </Suspense>
         </div>

@@ -36,7 +36,7 @@ const ProfileInfo = (props) => {
 					{props.profile.fullName}
 				</div>
 				<ProfileStatus userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
-				{infoChanged ? <ProfileForm isInfoChanged={isInfoChanged} profile={props.profile} saveProfile={props.saveProfile}/> :
+				{infoChanged ? <ProfileForm isInfoChanged={isInfoChanged} profile={props.profile} saveProfile={props.saveProfile}	/> :
 					<div className={styles.profileInfo}>
 						<div className={styles.title}>My info</div>
 						<div className={styles.profileJobInfo}>
@@ -74,6 +74,7 @@ const ProfileInfo = (props) => {
 								<div>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '-'}</div>
 							</div>
 						</div>
+						{props.profileInfoError && <div className={styles.error}>{props.profileInfoError}</div>}
 						{props.isOwner ? 
 						<button className={styles.button} onClick={() => isInfoChanged(true)}>Change</button> : ""}
 					</div>}

@@ -66,6 +66,7 @@ export const login =
     let response = await usersAPI.login(email, password, rememberMe, captcha);
     if (response.data.resultCode === 0) {
       dispatch(setAuthInfo());
+      dispatch(setCaptchaURL(null));
     } else {
       if (response.data.resultCode === 10) {
         dispatch(getCaptchaURL());

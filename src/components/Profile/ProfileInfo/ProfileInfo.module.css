@@ -107,3 +107,8 @@
 	margin-right: 10px;
 	width: 120px;
 }
+
+.error {
+	font-size: 20px;
+	color: red;
+}
